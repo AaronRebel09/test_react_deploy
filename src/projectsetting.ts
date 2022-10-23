@@ -1,5 +1,5 @@
 export const addressContract = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
-export const addressNFTContract = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
-export const addressMarketContract = '0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0'
+export const addressNFTContract = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+export const addressMarketContract = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512'
 export const pinataKey = 'f4f64fb5b361a2b9582d'
 export const pinataSecret = '43d32f813a3213e7d09fac476e0fd09d36b8d51df4e49124b90ca30ee770bf11'

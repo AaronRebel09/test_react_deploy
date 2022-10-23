@@ -44,7 +44,7 @@ useEffect( () => {
     console.log(account)
 
     library.getCode(addressMarketContract).then((result:string)=>{
-      console.log('code', result);
+      //console.log('code', result);
       //check whether it is a contract
       if(result === '0x') return
 
@@ -52,6 +52,7 @@ useEffect( () => {
         case 0:
           market.fetchActiveItems({from:account}).then((items:any)=>{
             setItems(items)
+            console.log(items)
           })    
           break;
         case 1:
@@ -101,7 +102,7 @@ async function buyInNFTMarket(event:React.FormEvent,itemId:BigNumber) {
     ).catch('error', console.error)
 }
 
-const state = ["On Sale","Sold","Inactive"]
+const state = ["En venta","Vendido","Inactivo"]
 
 return (
   <>
@@ -114,15 +115,15 @@ return (
       :items.map((item:any)=>{
         return(
           <GridItem key={item.id} >
-            <CardERC721 addressContract={item.nftContract} tokenId={item.tokenId} ></CardERC721>
+            <CardERC721 addressContract={item.nftContract} tokenId={item.tokenId} name={item.name} description={item.description}></CardERC721>
             <Text fontSize='sm' px={5} pb={1}> {state[item.state]} </Text> 
             {((item.seller == account && item.buyer == ethers.constants.AddressZero) || (item.buyer == account))
-            ?<Text fontSize='sm' px={5} pb={1}> owned by you </Text> 
+            ?<Text fontSize='sm' px={5} pb={1}> Creado por ti </Text> 
             :<Text></Text>
             }
             <Box>{
             (item.seller != account && item.state == 0)
-            ? <Button width={220} type="submit" onClick={(e)=>buyInNFTMarket(e,item.id)}>Buy this!</Button>
+            ? <Button width={220} type="submit" onClick={(e)=>buyInNFTMarket(e,item.id)}>Comprar</Button>
             : <Text></Text>
             }
             {item.buyer == account && item.state == 1 ? 
